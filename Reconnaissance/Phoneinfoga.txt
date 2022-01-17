@@ -1,0 +1,12 @@
+Gives you Google Search data about a phone number, plus some bonuses. 
+
+Installation: 
+
+curl -sSL https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/support/scripts/install | bash
+ls
+tar xzf [the Phoneinfoga ".tar" file, name changes]
+
+
+To scan a number:
+
+phoneinfoga scan -n number
