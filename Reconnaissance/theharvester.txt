@@ -4,3 +4,9 @@ Finds info for almost anything eally.
 check out the help menu
 
 finds emails, hostname IPs, etc. 
+
+
+example:
+theharvester -d tesla.com -l 500 -b google 
+
+shows info (length 500) on tesla.com from Google Search as a source
