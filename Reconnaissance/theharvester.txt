@@ -1,0 +1,6 @@
+theharvester: pre-installed on Kali. 
+
+Finds info for almost anything eally.
+check out the help menu
+
+finds emails, hostname IPs, etc. 
