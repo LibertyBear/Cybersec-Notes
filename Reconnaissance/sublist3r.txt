@@ -1,0 +1,5 @@
+Not included in Kali: apt install sublist3r
+
+sublist3r -d tesla.com
+
+looks for subdomains for tesla.com
