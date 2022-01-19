@@ -1,0 +1,5 @@
+built-in to kali
+
+command: whatweb <url>
+
+shows some data surrounding the site, like CMS, frameworks, etc
