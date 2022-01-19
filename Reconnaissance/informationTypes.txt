@@ -1,0 +1,11 @@
+All of these are valuable:
+
+
+- For a company/organization:
+    - Location: Satellite images, Drone recon, Building layout(badge readers, break areas, security, fencing)
+    - Job: Employees(names, job title, phone number, manager, ect), Pictures(badge photos, desk photos, computer photos, ect)
+  
+  
+  Web/Host: Target validation(WHOIS, nslookup, dnsrecon), Finding subdomains(Google fu, dig, Nmap), Fingerprinting(Nmap, NetCat), Data Breaches
+  
+  
