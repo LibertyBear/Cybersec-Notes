@@ -1,0 +1,17 @@
+Pre installed on Kali
+(GUI Program)
+
+Web proxy. Intercepts traffic. 
+
+Setup:
+Temporary project > Start burp
+Open firefox > Three line/Dot menu on the top right > Preferences > Network proxy section, Settings > Manual proxy configuration, set HTTP 
+proxy to home (127.0.0.1) and port 8080 > tick the "Use this proxy for all protocols" checkbox > go to "https://burp", download certificate > go back to firefox 
+preferences > Privacy & Security, Security > view certificates > import > select the certificate
+
+Testing:
+Go to a site (tesla.com for example), it wont load. Go to burp suite:
+
+Proxy, click forward to intercept traffic. 
+
+Target. On the left are all the pages that have been intercepted. The responses have a lot of info
