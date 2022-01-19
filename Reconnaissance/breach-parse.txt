@@ -1,0 +1,5 @@
+https://github.com/hmaverickadams/breach-parse
+
+A shell script that outputs all leaked emails and passwords for a certain domain.
+
+It's been proven that after a breach, company passwords are "typically" changed  with very subtle details, like capitalization, so this is all very useful info. Especially for making bruteforce dictionaries. 
