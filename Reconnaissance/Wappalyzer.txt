@@ -1,0 +1,3 @@
+Firefox extension: https://addons.mozilla.org/en-US/firefox/addon/wappalyzer/
+
+Shows data about site: CMS, Programming language, Analytics, Tag manager, Operating system, web server, PaaS, Web framework, etc.
