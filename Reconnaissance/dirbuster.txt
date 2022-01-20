@@ -1,0 +1,9 @@
+pre-installed on kali
+
+Target URL: http://<ip>:<port, most cases 80>/ 
+
+Browse wordlist: typically found at /usr/share/wordlists/dirbuster --> choose a list size
+
+file extensions: typically apache websites use php. microsoft sites use asp, aspx... 
+              you can add various extension with a comma. "php,zip,pdf,docx,rar". 
+              the more extensions, the slower. 
