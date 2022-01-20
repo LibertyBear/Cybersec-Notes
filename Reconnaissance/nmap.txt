@@ -1,0 +1,6 @@
+Built-in to kali
+
+example: nmap -T4 -p- -A <ip address>          speed 4, all ports
+The slower the speed, the slower the results and the "stealthier" the scan is.
+
+shows open ports + info
