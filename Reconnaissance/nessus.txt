@@ -1,0 +1,6 @@
+Download the 64 bit ".deb": https://www.tenable.com/downloads/nessus?loginAttempted=true
+
+dpkg --install <.deb file>
+
+Then go to the url posted by the terminal. Create an account and install. 
+
