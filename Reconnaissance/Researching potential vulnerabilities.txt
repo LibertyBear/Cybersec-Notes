@@ -1,0 +1,7 @@
+search on google stuff like "mod_ssl 2.8.4 exploit" for each version of each protocol, framework, etc gathered from your scans. 
+
+You should keep assesment notes that include:
+
+- Nmap results, for each open port of interest
+- Nikto scan
+
