@@ -1,0 +1,33 @@
+RECON METHODOLOGY:
+
+
+
+
+Personnel:
+
+	- Hunter.io: employees, emails, departments, employee info.
+	- Breach-Parse: All leaked emails and passwords
+	- sherlock: find user across sites
+	- phoneinfoga: get info on phone number
+	
+
+Server: 
+	- theHarvester: emails, IPs, hostnames, etc. 
+	- sublist3r: looks for subdomains
+	- httprobe: Gets fed a list of domains and 
+		outputs which ones are online 
+	- Wappalyzer: shows tech data of site, cms, programming language, OS, etc
+	- Whatweb: like wappalyzer 
+	- builtwith: same as wappalyzer
+	-smbclient: connect to smb
+	
+
+Scanning:
+ 
+	- nmap: scans ports
+	- nikto: shows server software, outdates and vulnerabilities
+	- dirbuster: searches for subdomains and files
+	- nessus: Displays vulnerabilities on server
+	- Research vulnerabilities
+
+
