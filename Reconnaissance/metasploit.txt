@@ -1,0 +1,25 @@
+built-in to kali
+
+msfconsole
+
+case: Port uses smb, we can find a way to exploit this (i guess xd)
+
+> search smb
+
+say we are interested in the module "auxilary/scanner/smb/smb_version"
+
+> use auxilary/scanner/smb/smb_version
+
+to see info about the module:
+
+> info
+
+so for instance, in this case, we can set RHOST to the target ip:
+
+> set RHOST <ip>
+
+and run
+
+> run
+
+and get additional info on the host. 
