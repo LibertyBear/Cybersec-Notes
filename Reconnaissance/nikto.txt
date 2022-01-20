@@ -1,0 +1,3 @@
+command: nikto -h https://<ip address>
+
+shows software running server (and if it's outdated) and what security messsures are missing. 
