@@ -1,5 +1,7 @@
 pre-installed on kali
 
+searches for all possible subdomains and loose files. 
+
 Target URL: http://<ip>:<port, most cases 80>/ 
 
 Browse wordlist: typically found at /usr/share/wordlists/dirbuster --> choose a list size
