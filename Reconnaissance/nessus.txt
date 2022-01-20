@@ -4,3 +4,4 @@ dpkg --install <.deb file>
 
 Then go to the url posted by the terminal. Create an account and install. 
 
+This is a GUI tool that scans for vulnerabilities. 
