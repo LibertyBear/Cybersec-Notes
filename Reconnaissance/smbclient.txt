@@ -1,0 +1,12 @@
+built-in to kali
+
+connect to smb file share client. 
+
+smbclient -L \\\\<ip>\\
+
+if it asks for password just hit enter, and it'll display sharenames
+
+to connect to a sharename: 
+smbclient \\\\<ip>\\<sharename>
+
+typically IPC doesnt require a password. 
