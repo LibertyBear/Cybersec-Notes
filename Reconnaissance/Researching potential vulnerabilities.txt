@@ -5,3 +5,5 @@ You should keep assesment notes that include:
 - Nmap results, for each open port of interest
 - Nikto scan
 
+
+also, you can use the command "searchsploit <software, framework, etc>" on kali to find exploits
