@@ -1,0 +1,10 @@
+git clone https://github.com/htr-tech/zphisher
+
+cd zphisher
+
+./zphisher
+
+from there on its pretty straight forward.
+
+Adviced to camouflage the url with something like https://tiny.cc/ 
+be wise to overcome the spam notifiers like in Gmail. 
