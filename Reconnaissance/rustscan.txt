@@ -1,0 +1,3 @@
+https://github.com/RustScan/RustScan/wiki/Installation-Guide
+
+shows which ports are open
