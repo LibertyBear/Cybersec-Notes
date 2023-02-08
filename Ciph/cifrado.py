@@ -71,14 +71,15 @@ def cifradoCesarAlfabetoInglesGen(cadena, secreto):
         # Recoge el caracter a cifrar
         ordenClaro = ord(cadena[i])
         ordenCifrado = 0
+        val = ord(secreto[i%len(secreto)])
         if(cadena[i] == " "):
             ordenCifrado = ord(" ")
         # Cambia el caracter a cifrar
         if (ordenClaro >= 65 and ordenClaro <= 90):
-            ordenCifrado = (((ordenClaro - 65) + secreto - 65 + 1) % 26) + 65
+            ordenCifrado = (((ordenClaro - 65) + val - 65 + 1) % 26) + 65
         #para minusculas
         if (ordenClaro >= 97 and ordenClaro <= 122):
-            ordenCifrado = (((ordenClaro - 97) + secreto - 97 + 1) % 26) + 97
+            ordenCifrado = (((ordenClaro - 97) + val - 97 + 1) % 26) + 97
         # Añade el caracter cifrado al resultado
         resultado = resultado + chr(ordenCifrado)
         i = i + 1
@@ -94,15 +95,16 @@ def decifradoCesarAlfabetoInglesGen(cadena, secreto):
     while i < len(cadena):
         # Recoge el caracter a cifrar
         ordenClaro = ord(cadena[i])
+        val = ord(secreto[i%len(secreto)])
         ordenCifrado = 0
         if(cadena[i] == " "):
             ordenCifrado = ord(" ")
         # Cambia el caracter a cifrar
         if (ordenClaro >= 65 and ordenClaro <= 90):
-            ordenCifrado = (((ordenClaro - 65) - secreto + 65 - 1) % 26) + 65
+            ordenCifrado = (((ordenClaro - 65) - val + 65 - 1) % 26) + 65
         #para minusculas
         if (ordenClaro >= 97 and ordenClaro <= 122):
-            ordenCifrado = (((ordenClaro - 97) - secreto + 97 - 1) % 26) + 97
+            ordenCifrado = (((ordenClaro - 97) - val + 97 - 1) % 26) + 97
         # Añade el caracter cifrado al resultado
         resultado = resultado + chr(ordenCifrado)
         i = i + 1
@@ -112,7 +114,7 @@ def decifradoCesarAlfabetoInglesGen(cadena, secreto):
 
 claroCESARMAY = 'VENI VIDI VIncI AURIA'
 print(claroCESARMAY)
-cifradoCESARMAY = cifradoCesarAlfabetoInglesGen(claroCESARMAY, 5) 
+cifradoCESARMAY = cifradoCesarAlfabetoInglesGen(claroCESARMAY, "pupa" ) 
 print(cifradoCESARMAY)
-decifradoCESARMAY = decifradoCesarAlfabetoInglesGen(cifradoCESARMAY, 5) 
+decifradoCESARMAY = decifradoCesarAlfabetoInglesGen(cifradoCESARMAY, "pupa") 
 print(decifradoCESARMAY)
